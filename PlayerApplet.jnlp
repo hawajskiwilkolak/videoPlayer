@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jnlp spec="1.0+" codebase="" href="">
+    <information>
+        <title>Player</title>
+        <vendor>Ozzyrys</vendor>
+    </information>
+    <resources>
+        <!-- Application Resources -->
+        <j2se version="1.7+" href="http://java.sun.com/products/autodl/j2se" />
+        <jar href="VideoPlayerApplet.jar" main="true" />
+		<jar href="lib/xuggle-xuggler-5.4.jar" />
+		<jar href="lib/slf4j-api-1.7.2.jar" />
+    </resources>
+    <applet-desc 
+        name="Video Applet"
+        main-class="com.ozzyrys.videoapplet.PlayerApplet"
+        width="800"
+        height="600">
+    </applet-desc>
+	<security>
+        <all-permissions />
+    </security>
+</jnlp>  

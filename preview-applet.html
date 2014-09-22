@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- ########################## IMPORTANT NOTE ############################ -->
+<!-- This preview HTML page will work only with JDK 6 update 10 and higher! -->
+<!-- ###################################################################### -->
+<html>
+    <head>
+        <title>Test page for launching the applet via JNLP</title>
+    </head>
+    <body>
+        <h3>Test page for launching the applet via JNLP</h3>
+        <script type="text/javascript" src="http://java.com/js/deployJava.js"></script>
+        <script type="text/javascript">
+            var attributes = {
+                id:         "player",
+                code:       "${JNLP.APPLET.CLASS}",
+                archive:    "${JNLP.RESOURCES.MAIN.JAR}",
+                width:      "${JNLP.APPLET.WIDTH}",
+                height:     "${JNLP.APPLET.HEIGHT}"
+            };
+            var parameters = {${JNLP.APPLET.PARAMS}}; <!-- Applet Parameters -->
+            var version = "${JNLP_VM_VERSION}"; <!-- Required Java Version -->
+            deployJava.runApplet(attributes, parameters, version);
+        </script>
+        <!-- Or use the following applet element to launch the applet using jnlp_href -->
+        <!--
+        <applet width="${JNLP.APPLET.WIDTH}" height="${JNLP.APPLET.HEIGHT}">
+            <param name="jnlp_href" value="${JNLP.FILE}"/>
+        </applet>
+        -->
+        
+        <!-- Player API
+		player.connectToHost(String host, int port)
+		player.disconnect()
+		player.startRecording(String filename)
+		player.stopRecording()
+		player.enableAudio()
+		player.disableAudio()
+		player.resizeApplet(int width, int height)
+		player.connectToFile(String filename)
+		player.reconnect(String host, int port, String filename) - filename moze byc "" (pusty string)
+		player.status()
+	-->
+    </body>
+</html>

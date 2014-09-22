@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
+<html>
+	<head>
+		<title>Player</title>
+		<script src="js/jquery.js"></script>
+		<script>
+			function resize(width, height)
+			{
+				player.resizeApplet(width, height);
+				$('applet').attr('width',width);
+				$('applet').attr('height',height);
+			}
+		</script>
+	</head>
+	<body>
+		<script src="http://java.com/js/deployJava.js"></script>
+		<script>
+			var attributes = {
+				id:			"player",
+				code:       "com.ozzyrys.videoapplet.PlayerApplet",
+				archive:    "VideoPlayerApplet.jar, lib/netty-4.0.19.Final.jar, lib/slf4j-api-1.7.2.jar, lib/xuggle-xuggler-5.4.jar",
+				width:      320,
+				height:     240
+			};
+			var parameters = {/*host:"127.0.0.1", port:"82",*/ filepath:"X:\\movies\\Rosencrantz and Guildernstein are Dead.avi", mode: "file", jnlp_href:"VideoPlayerApplet.jnlp"}; <!-- Applet Parameters -->             
+			var version = "1.7"; <!-- Required Java Version -->             
+			deployJava.runApplet(attributes, parameters, version);             
+			player.disableAudio();         
+		</script>
+	</body>
+	<!-- Player API
+		player.connectToHost(String host, int port)
+		player.disconnect()
+		player.startRecording(String filename)
+		player.stopRecording()
+		player.enableAudio()
+		player.disableAudio()
+		player.resizeApplet(int width, int height)
+	-->
+	<button onclick="player.disableAudio()">Mute</button>
+	<button onclick="player.enableAudio()">UnMute</button>
+	<button onclick="resize(640,480)">Big</button>
+	<button onclick="resize(320, 240)">Small</button>
+	<button onclick="player.connectToFile('X:\\movies\\Rosencrantz and Guildernstein are Dead.avi')">Connect</button>
+	<button onclick="player.disconnect(); player.stopRecording();">DisConnect</button>
+	<button onclick="player.connectToHost('127.0.0.1', 80);player.startRecording('d:\\20140606_in2');">ReConnect</button>
+</html>
